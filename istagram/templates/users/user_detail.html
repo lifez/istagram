@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main>
+    <!-- Profile -->
+    <div class="profile">
+        <!-- Profile Image -->
+        <div class="profile-image">
+        <img class="rounded-circle" src="{{ object.profile_image.url }}" />
+        </div>
+        <!-- Profile Image -->
+
+        <!-- Profile Description -->
+        <div class="profile-description">
+        <div class="title">
+            <span>{{object.username}}</span>
+            <button>แก้ไขโปรไฟล์</button>
+        </div>
+        <div class="stat">
+            <b>119</b> โพสต์
+            ผู้ติดตาม <b>404</b> คน
+            กำลังติดตาม <b>346</b> คน
+        </div>
+        <div>
+            {{object.bio}}
+        </div>
+        </div>
+        <!-- Profile Description -->
+    </div>
+    <!-- Profile -->
+    {{name}}
+    {{object.purchase_set.all}}
+    {%for purchase in object.purchase_set.all %}
+        <p>{{purchase.product}}</p>
+    {%endfor%}
+    <div class="posts">
+        {% for post in object.post_set.all %}
+        <div class="post">
+            <a href="#">
+            <img src="{{ post.image.url }}" />
+            <div class="overlay">
+                <div class="information">
+                <span>
+                    <i class="fas fa-heart fa-lg"></i>23
+                </span>
+                <span>
+                    <i class="fas fa-comment fa-lg"></i>7
+                </span>
+                </div>
+            </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</main>
+{% endblock content %}
